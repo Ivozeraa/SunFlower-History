@@ -43,9 +43,9 @@
             gallery: [
                 { src: "images/primeirafoto.JPEG", caption: "Nossa primeira foto juntos", tags: ["us"] },
                 { src: "images/mão.JPEG", caption: "Desenho que Van Gogh seria humilhado", tags: ["moments"] },
-                { src: "images/pato.jpeg", caption: "Quando você ficou cuidando do pato quando viajei.", tags: ["moments"] },
+                { src: "images/Pato.jpeg", caption: "Quando você ficou cuidando do pato quando viajei.", tags: ["moments"] },
                 { src: "images/capivara.JPEG", caption: "Capivara sequestrada para programar", tags: ["moments"] },
-                { src: "images/ultima.jpeg", caption: "Nossa última foto juntos. 🤍", tags: ["us"] },
+                { src: "images/Ultima.jpeg", caption: "Nossa última foto juntos. 🤍", tags: ["us"] },
             ],  
             letter: {
                 title: "Minha Querida Anny,",
