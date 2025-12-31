@@ -1,0 +1,464 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --color-bg: linear-gradient(to top, #ebda4b, #fff9c4); 
+    --line-color: linear-gradient(to left top, #66cc66, #004d00);
+    --flower-center: radial-gradient(circle, #000, #ff5e00);
+    --leaf-color: radial-gradient(circle, #82ff86, #104e1c);
+    --petal-color: radial-gradient(circle, #ff5e00, #ffbb00);
+    --text-color: #333;
+}
+
+html {
+    height: 100%; /* Asegura que html tenga altura completa */
+}
+
+body {
+    /* Aplicación múltiple de fondos para garantizar compatibilidad */
+    background: #ebda4b; /* Color de respaldo */
+    background-image: var(--color-bg);
+    background-attachment: fixed; /* Evita problemas en scroll */
+    background-size: 100% 100%; /* Asegura cobertura completa */
+    min-height: 100vh;
+    height: 100vh; /* Asegura que ocupe toda la altura en móviles */
+    width: 100%;
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    overflow: hidden;
+    position: fixed; /* Previene scroll innecesario */
+    touch-action: manipulation; /* Mejora interacción táctil */
+}
+
+.message {
+    position: absolute;
+    top: 28%; /* Bajado para equilibrar con la flor más alta */
+    left: 50%;
+    transform: translateX(-50%);
+    font-family: 'Arial', sans-serif;
+    font-size: clamp(1.5rem, 5vw, 2.5rem); /* Tamaño de texto responsivo */
+    color: var(--text-color);
+    z-index: 10;
+    text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
+    text-align: center;
+    width: 90%; /* Evitar desbordamiento en pantallas pequeñas */
+}
+
+.heart {
+    color: #F44336;
+    display: inline-block;
+    animation: beat 1s infinite alternate;
+}
+
+@keyframes beat {
+    from { transform: scale(1); }
+    to { transform: scale(1.2); }
+}
+
+.flower_wrapper {
+    position: absolute;
+    left: 50%;
+    bottom: 2vmin;
+    transform: translateX(-50%); /* Centrado en móviles */
+    animation: moving-flower-1 4s linear infinite;
+}
+
+@keyframes moving-flower-1 {
+    0%, 100% { transform: translateX(-50%) rotate(0deg); }
+    50% { transform: translateX(-50%) rotate(2deg); }
+}
+
+.flower_stem {
+    width: 2vmin;
+    height: 85vmin; /* Tallo mucho más largo */
+    background-image: var(--line-color);
+    border-radius: 4vmin;
+    animation-delay: 0.3s;
+}
+
+.flower_center {
+    position: absolute;
+    top: 0vmin;
+    left: 50%;
+    z-index: 5;
+    transform: translateX(-50%) rotate(-10deg);
+    width: 20vmin;
+    height: 20vmin;
+    border-radius: 50%;
+    background: var(--flower-center);
+    animation: open-flower-middle 2s 0.4s backwards;
+}
+
+.flower_petal {
+    position: absolute;
+    left: 50%;
+    z-index: 3;
+    bottom: 75vmin; /* Ajustado para el tallo más largo */
+    transform: translateX(-50%);
+    width: 7vmin;
+    height: 20vmin;
+    background: var(--petal-color);
+    clip-path: ellipse(50% 50% at 50% 50%);
+    transform-origin: center bottom;
+    animation: open-flower 2s 1s backwards;
+}
+
+.flower_petal-1 {
+    border-radius: 50% 50% 50% / 80% 80% 20% 20%;
+    background-image: none;
+    background: var(--petal-color);
+    animation: open-flower 1.4s 1s backwards;
+}
+
+.flower_petal-2 { transform: translateX(-50%) rotate(-30deg); }
+.flower_petal-3 { transform: translateX(-50%) rotate(-60deg); }
+.flower_petal-4 { transform: translateX(-50%) rotate(-90deg); }
+.flower_petal-5 { transform: translateX(-50%) rotate(-120deg); }
+.flower_petal-6 { transform: translateX(-50%) rotate(-150deg); }
+.flower_petal-7 { transform: translateX(-50%) rotate(30deg); }
+.flower_petal-8 { transform: translateX(-50%) rotate(60deg); }
+.flower_petal-9 { transform: translateX(-50%) rotate(90deg); }
+.flower_petal-10 { transform: translateX(-50%) rotate(120deg); }
+.flower_petal-11 { transform: translateX(-50%) rotate(150deg); }
+.flower_petal-12 { transform: translateX(-50%) rotate(180deg); }
+
+.flower_leaf {
+    position: absolute;
+    left: 60%;
+    bottom: 38vmin; /* Ajustado para el tallo más largo */
+    transform: translateX(-45%) rotate(80deg);
+    width: 7vmin;
+    height: 17vmin;
+    background: var(--leaf-color);
+    clip-path: none;
+    border-radius: 10vmin 2vmin 10vmin 2vmin;
+    transform-origin: center bottom;
+}
+
+.flower_leaf-1 {
+    bottom: 38vmin; /* Ajustado para el tallo más largo */
+    transform: translateX(-45%) rotate(80deg);
+}
+
+.flower_leaf-2 {
+    bottom: 48vmin; /* Ajustado para el tallo más largo */
+    transform: translateX(-55%) rotate(-80deg);
+}
+
+/* Añadimos una hoja más arriba */
+.flower_leaf-3 {
+    bottom: 60vmin;
+    transform: translateX(-45%) rotate(80deg);
+}
+
+.flower_light {
+    position: absolute;
+    bottom: 70vmin;
+    width: 1vmin;
+    height: 1vmin;
+    background-color: rgb(255, 251, 0);
+    border-radius: 50%;
+    filter: blur(0.2vmin);
+    animation: light-ans 4s linear infinite backwards;
+}
+
+.flower_light:nth-child(odd) {
+    background-color: #23f0ff;
+}
+
+.flower_light-1 { left: -2vmin; animation-delay: 1s; }
+.flower_light-2 { left: 3vmin; animation-delay: 0.5s; }
+.flower_light-3 { left: -6vmin; animation-delay: 0.3s; }
+.flower_light-4 { left: 6vmin; animation-delay: 0.9s; }
+.flower_light-5 { left: -1vmin; animation-delay: 1.5s; }
+.flower_light-6 { left: -4vmin; animation-delay: 3s; }
+.flower_light-7 { left: 3vmin; animation-delay: 2s; }
+.flower_light-8 { left: -6vmin; animation-delay: 3.5s; }
+
+/* Agregar más luces para llenar el espacio */
+.flower_light-9 { left: 5vmin; bottom: 90vmin; animation-delay: 2.2s; }
+.flower_light-10 { left: -3vmin; bottom: 100vmin; animation-delay: 1.8s; }
+.flower_light-11 { left: 2vmin; bottom: 110vmin; animation-delay: 0.7s; }
+
+.light {
+    position: absolute;
+    bottom: 0vmin;
+    width: 1vmin;
+    height: 1vmin;
+    background-color: rgb(255, 251, 0);
+    border-radius: 50%;
+    filter: blur(0.2vmin);
+    animation: light-ans-background 7s linear infinite backwards;
+}
+
+.light:nth-child(odd) {
+    background-color: #ff7723;
+}
+
+.light-1 { left: 10vmin; animation-delay: 1s; }
+.light-2 { left: 20vmin; animation-delay: 0.5s; }
+.light-3 { left: 60vmin; animation-delay: 0.3s; }
+.light-4 { left: 80vmin; animation-delay: 0.9s; }
+.light-5 { left: 45vmin; animation-delay: 1.5s; }
+.light-6 { left: 10vmin; animation-delay: 3s; }
+.light-7 { left: 90vw; animation-delay: 2s; } /* Cambiado de vmax a vw */
+.light-8 { left: 60vw; animation-delay: 3.5s; } /* Cambiado de vmax a vw */
+.light-9 { left: 70vw; animation-delay: 2s; } /* Cambiado de vmax a vw */
+.light-10 { left: 95vw; animation-delay: 3.5s; } /* Cambiado de vmax a vw */
+.light-11 { left: 75vw; animation-delay: 3s; } /* Cambiado de vmax a vw */
+.light-12 { left: 85vw; animation-delay: 0.5s; } /* Cambiado de vmax a vw */
+
+/* Añadir más luces para llenar el espacio vacío */
+.light-13 { left: 30vw; bottom: 50vh; animation-delay: 1.2s; }
+.light-14 { left: 50vw; bottom: 60vh; animation-delay: 2.7s; }
+.light-15 { left: 65vw; bottom: 40vh; animation-delay: 0.8s; }
+.light-16 { left: 15vw; bottom: 45vh; animation-delay: 3.2s; }
+
+@keyframes open-flower-leaves {
+    0% {
+        opacity: 0;
+        transform: translateX(-50%) scale(0);
+    }
+}
+
+@keyframes open-flower {
+    0% {
+        transform: translateX(-50%) rotate(0);
+    }
+}
+
+@keyframes open-flower-middle {
+    0% {
+        opacity: 0;
+        transform: translateX(-50%) scale(0);
+    }
+}
+
+@keyframes light-ans {
+    0% {
+      opacity: 0;
+      transform: translateY(0vmin);
+    }
+  
+    25% {
+      opacity: 1;
+      transform: translateY(-5vmin) translateX(-2vmin);
+    }
+  
+    50% {
+      opacity: 1;
+      transform: translateY(-15vmin) translateX(2vmin);
+      filter: blur(0.2vmin);
+    }
+  
+    75% {
+      transform: translateY(-20vmin) translateX(-2vmin);
+      filter: blur(0.2vmin);
+    }
+  
+    100% {
+      transform: translateY(-30vmin);
+      opacity: 0;
+      filter: blur(1vmin);
+    }
+}
+
+@keyframes light-ans-background {
+    0% {
+      opacity: 0;
+      transform: translateY(0vmin);
+    }
+  
+    25% {
+      opacity: 1;
+      transform: translateY(-10vmin) translateX(-2vmin);
+    }
+  
+    50% {
+      opacity: 1;
+      transform: translateY(-20vmin) translateX(2vmin);
+      filter: blur(0.2vmin);
+    }
+  
+    60% {
+      transform: translateY(-30vmin) translateX(-2vmin);
+      filter: blur(0.2vmin);
+    }
+  
+    70% {
+      transform: translateY(-40vmin) translateX(2vmin);
+      filter: blur(0.2vmin);
+    }
+
+    80% {
+      transform: translateY(-50vmin) translateX(-2vmin);
+      filter: blur(0.2vmin);
+    }
+
+    100% {
+      transform: translateY(-60vmin);
+      opacity: 0;
+      filter: blur(1vmin);
+    }
+}
+
+/* Media Query para dispositivos móviles */
+@media (max-width: 768px) {
+    body {
+        /* Aplicar directamente los colores del gradiente para dispositivos móviles */
+        background: #ebda4b;
+        background: -webkit-linear-gradient(bottom, #ebda4b, #fff9c4);
+        background: -moz-linear-gradient(bottom, #ebda4b, #fff9c4);
+        background: linear-gradient(to top, #ebda4b, #fff9c4);
+    }
+    
+    .flower_stem {
+        height: 75vmin; /* Tallo más largo en móviles, pero algo más corto que en desktop */
+    }
+    
+    .flower_petal {
+        bottom: 65vmin; /* Ajustar posición de pétalos */
+    }
+    
+    .flower_center {
+        width: 18vmin; /* Centro de flor ligeramente más pequeño */
+        height: 18vmin;
+    }
+    
+    .flower_leaf-1 {
+        bottom: 30vmin; /* Ajustar posición de hojas */
+    }
+    
+    .flower_leaf-2 {
+        bottom: 40vmin; /* Ajustar posición de hojas */
+    }
+    
+    .flower_leaf-3 {
+        bottom: 55vmin; /* Ajustar posición de hojas */
+    }
+    
+    /* Asegurar que las luces no se salgan de la pantalla */
+    .light {
+        opacity: 0.8; /* Reducir ligeramente la opacidad */
+    }
+    
+    /* Mejorar rendimiento de animaciones en dispositivos de gama baja */
+    @keyframes light-ans-background {
+        0% {
+            opacity: 0;
+            transform: translateY(0vmin);
+        }
+        
+        50% {
+            opacity: 1;
+            transform: translateY(-30vmin) translateX(2vmin);
+        }
+        
+        100% {
+            transform: translateY(-50vmin);
+            opacity: 0;
+        }
+    }
+    
+    .message {
+        top: 20%; /* Reajustar mensaje para móviles */
+    }
+}
+
+/* Optimización para dispositivos muy pequeños */
+@media (max-width: 375px) {
+    .message {
+        font-size: 1.5rem; /* Texto aún más pequeño */
+        top: 15%; /* Posicionar mensaje más arriba */
+    }
+    
+    .flower_stem {
+        height: 70vmin; /* Tallo más corto para dispositivos pequeños */
+    }
+    
+    .flower_petal {
+        bottom: 60vmin;
+    }
+    
+    .flower_leaf-1 {
+        bottom: 25vmin;
+    }
+    
+    .flower_leaf-2 {
+        bottom: 35vmin;
+    }
+    
+    .flower_leaf-3 {
+        bottom: 50vmin;
+    }
+}
+
+/* Agregar soporte para orientación landscape */
+@media (max-height: 500px) and (orientation: landscape) {
+    .message {
+        top: 10%;
+    }
+    
+    .flower_stem {
+        height: 55vmin;
+    }
+    
+    .flower_petal {
+        bottom: 45vmin;
+    }
+    
+    .flower_leaf-1 {
+        bottom: 20vmin;
+    }
+    
+    .flower_leaf-2 {
+        bottom: 25vmin;
+    }
+    
+    .flower_leaf-3 {
+        display: none; /* Ocultar tercera hoja en modo landscape para evitar solapamientos */
+    }
+}
+
+.sunflower {
+    position: absolute;
+    bottom: 0;
+}
+
+/* Girassol central (original) */
+.sunflower-1 {
+    left: 50%;
+    transform: translateX(-50%) scale(1);
+}
+
+/* Girassol da esquerda */
+.sunflower-2 {
+    left: 20%;
+    transform: scale(0.85);
+    animation-delay: 1s;
+    opacity: 0.95;
+}
+
+/* Girassol da direita */
+.sunflower-3 {
+    left: 80%;
+    transform: scale(0.9);
+    animation-delay: 2s;
+    opacity: 0.95;
+}
+
+/* Cursor piscando */
+.cursor {
+    display: inline-block;
+    animation: blink 1s infinite;
+    font-weight: bold;
+}
+
+@keyframes blink {
+    0%, 50% { opacity: 1; }
+    51%, 100% { opacity: 0; }
+}

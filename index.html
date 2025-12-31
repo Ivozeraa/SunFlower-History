@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Anny & Ivo | A história do Girassol </title>
+    
+    <!-- Meta Tags para SEO e Compartilhamento Social -->
+    <meta name="description" content="A história do Girassol.">
+    <meta name="author" content="Ivo">
+    <meta property="og:title" content="Ivo & Anny | A história do Girassol">
+    <meta property="og:description" content="A história do Girassol.">
+    <meta property="og:image" content="https://placehold.co/1200x630/0f051e/ffffff?text=I+%26+A">
+    <meta property="og:url" content="#"> <!-- Substitua pela URL final -->
+    <meta property="og:type" content="website">
+    <meta name="twitter:card" content="summary_large_image">
+
+    <!-- Favicon e Ícones -->
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>💖</text></svg>">
+
+    <!-- Pré-carregamento de Fontes -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Inter:wght@300;400&display=swap" rel="stylesheet">
+
+    <!-- GSAP (para animações avançadas) via CDN -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js" defer></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js" defer></script>
+
+    <link rel="stylesheet" href="css/index.css">
+</head>
+<body>
+    <canvas id="cosmic-background"></canvas>
+    <div class="progress-bar"></div>
+
+    <nav class="main-nav">
+        <ul>
+            <li><a href="#inicio" class="nav-link active">Início</a></li>
+            <li><a href="#music" class="nav-link">Nossa Música</a></li>
+            <li><a href="#timeline" class="nav-link">Linha do Tempo</a></li>
+            <li><a href="#gallery" class="nav-link">Galeria</a></li>
+            <li><a href="#letter" class="nav-link">Carta</a></li>
+        </ul>
+    </nav>
+    
+    <main class="main-container">
+
+        <!-- ======================= SEÇÃO HERO ======================= -->
+        <section id="inicio" class="hero">
+            <h1 class="reveal">Anny 🤍 Ivo</h1>
+            <p class="reveal" data-delay="0.2">Uma história que começou a ser escrita a partir de um Girassol. 🌻</p>
+            <button id="start-journey-btn" class="cta-button reveal" data-delay="0.4">▶ Começar essa história</button>
+            <div class="scroll-indicator">
+                <span>↓</span>
+            </div>
+        </section>
+
+        <!-- ======================= SEÇÃO NOSSA MÚSICA ======================= -->
+        <section id="music">
+            <h2 class="reveal">Nossa Música</h2>
+            <div class="music-player-container reveal">
+                <img src="https://placehold.co/300x300/c972ff/0D041A?text=FICA" alt="Capa do Álbum" class="album-art">
+                <div class="track-info">
+                    <h3 id="track-title">Carregando...</h3>
+                    <p id="track-artist">Carregando...</p>
+                </div>
+                <canvas id="waveform"></canvas>
+                <div class="audio-controls">
+                    <button id="play-pause-btn" aria-label="Tocar/Pausar">
+                        <svg id="play-icon" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"></path></svg>
+                        <svg id="pause-icon" viewBox="0 0 24 24" style="display: none;"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"></path></svg>
+                    </button>
+                </div>
+                <p class="music-description" id="music-text">Carregando...</p>
+            </div>
+            <audio id="audio-player" src=""></audio> <!-- O SRC será definido via JS -->
+        </section>
+
+        <!-- ======================= SEÇÃO LINHA DO TEMPO ======================= -->
+        <section id="timeline">
+            <!-- Contador -->
+            <div id="contador-tempo" class="contador"></div>
+        
+            <h2 class="reveal">Nossa Linha do Tempo</h2>
+            <div class="timeline" id="timeline-container">
+                <!-- Itens da timeline serão injetados aqui pelo JavaScript -->
+            </div>
+        </section>
+
+<script src="contador.js"></script>
+
+        <style>
+            .contador {
+                text-align: center;
+                font-size: 1.3rem;
+                font-family: 'Georgia', serif;
+                font-style: italic;
+                color: #f8e1ff;
+                margin-bottom: 1.5rem;
+                text-shadow: 0 0 8px rgba(201, 114, 255, 0.6);
+            }
+
+            @keyframes glowPulse {
+                0%, 100% {
+                    text-shadow: 0 0 10px rgba(201, 114, 255, 0.7),
+                                 0 0 20px rgba(201, 114, 255, 0.5);
+                }
+                50% {
+                    text-shadow: 0 0 20px rgba(201, 114, 255, 1),
+                                 0 0 40px rgba(201, 114, 255, 0.8);
+                }
+            }
+
+        </style>
+
+        <!-- ======================= SEÇÃO GALERIA ======================= -->
+        <section id="gallery">
+            <h2 class="reveal">Galeria de Momentos</h2>
+            <div class="gallery-filters reveal" id="gallery-filters-container">
+                <!-- Filtros serão injetados aqui -->
+            </div>
+            <div class="gallery-grid reveal" id="gallery-grid-container">
+                <!-- Imagens da galeria serão injetadas aqui -->
+            </div>
+        </section>
+
+        <!-- ======================= SEÇÃO CARTA ABERTA ======================= -->
+        <section id="letter">
+            <h2 class="reveal">Uma Carta Para Você</h2>
+            <div class="letter-content reveal" id="letter-container">
+                <!-- Conteúdo da carta será injetado aqui -->
+            </div>
+        </section>
+
+        <!-- ======================= SEÇÃO FINAL ======================= -->
+        <section id="final" class="final-call">
+            <h2 class="reveal">Nosso Infinito Particular</h2>
+            <p class="reveal" id="final-text">Carregando...</p>
+            <a href="girassol.html"><button id="surprise-btn" class="cta-button reveal">Uma Surpresa Final ✨</button></a>
+        </section>
+
+    </main>
+
+    <!-- Lightbox para a Galeria -->
+    <div class="lightbox" id="lightbox">
+        <button class="lightbox-btn lightbox-close">&times;</button>
+        <button class="lightbox-btn lightbox-prev">&#10094;</button>
+        <button class="lightbox-btn lightbox-next">&#10095;</button>
+        <img src="" alt="" id="lightbox-img">
+        <div class="lightbox-caption" id="lightbox-caption"></div>
+    </div>
+
+    <!-- Overlay para Easter Egg -->
+    <div class="konami-overlay" id="konami-overlay"></div>
+
+    <script src="js/index.js"></script>
+</body>
+</html>
